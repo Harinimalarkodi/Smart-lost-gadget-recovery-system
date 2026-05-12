@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="foundForm.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lemon&family=Monoton&family=Montserrat:ital,wght@0,200;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <title>Register – gotLost</title>
+</head>
+<body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
+        <a class="navbar-brand grow" href="../index.html">gotLost</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link grow" href="../index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link grow" href="lostForm.html">Lost</a></li>
+                <li class="nav-item"><a class="nav-link grow" href="foundForm.html">Found</a></li>
+                <li class="nav-item"><a class="nav-link grow" href="../about_us.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link grow" href="contactus.html">Contact Us</a></li>
+            </ul>
+            <a class="gl-signin-link" href="login.html"><i class="fas fa-user signin grow"></i> SignIn</a>
+        </div>
+    </nav>
+
+    <main>
+        <section>
+            <div class="container" id="main-container">
+                <div class="image"><img src="../images/register.jpg" alt=""></div>
+                <div class="container p-5 mt-5" id="form-container">
+                    <h1 class="text-center">Register Here <i class="far fa-smile-beam"></i></h1>
+                    <div id="reg-msg" style="text-align:center;margin:10px 0;font-size:15px;min-height:20px;"></div>
+                    <form class="mt-4" id="regForm" onsubmit="return handleRegister(event);">
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend"><span class="input-group-text bg-primary">Full Name*</span></div>
+                            <input type="text" id="reg_name" class="form-control" placeholder="John Cena">
+                        </div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend"><span class="input-group-text bg-primary">Email*</span></div>
+                            <input type="email" id="reg_email" class="form-control" placeholder="cenajohn@gmail.com">
+                        </div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend"><span class="input-group-text bg-primary">Phone No.</span></div>
+                            <input type="text" id="reg_phone" class="form-control" placeholder="+91 8888 8888">
+                        </div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend"><span class="input-group-text bg-primary">Sex*</span></div>
+                            <select id="reg_sex" class="form-control">
+                                <option value="">Choose...</option>
+                                <option>Male</option><option>Female</option><option>Other</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend"><span class="input-group-text bg-primary">Year*</span></div>
+                            <select id="reg_year" class="form-control">
+                                <option value="">Choose...</option>
+                                <option value="first">I</option><option value="second">II</option>
+                                <option value="third">III</option><option value="fourth">IV</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend"><span class="input-group-text bg-primary">Branch*</span></div>
+                            <select id="reg_branch" class="form-control">
+                                <option value="">Choose...</option>
+                                <option value="cse">Computer Science Engineering</option>
+                                <option value="it">Information Technology</option>
+                                <option value="ec">Electronics And Communication</option>
+                                <option value="ee">Electrical Engineering</option>
+                                <option value="au">Automobile Engineering</option>
+                                <option value="me">Mechanical Engineering</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend"><span class="input-group-text bg-primary">Password*</span></div>
+                            <input type="password" id="reg_pass" class="form-control" placeholder="Password">
+                        </div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend"><span class="input-group-text bg-primary">Confirm Password*</span></div>
+                            <input type="password" id="reg_pass2" class="form-control" placeholder="Confirm Password">
+                        </div>
+                        <div class="form-check mb-3">
+                            <input type="checkbox" class="form-check-input" id="reg_terms">
+                            <label class="form-check-label" for="reg_terms"><a href="#">Agree terms and conditions</a></label>
+                        </div>
+                        <div class="submit-button text-center">
+                            <button type="submit" class="btn btn-outline-primary">Submit</button>
+                        </div>
+                    </form>
+                    <p class="text-center mt-3">Already have an account? <a href="login.html">Login here</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="sticky-footer" class="py-2 bg-dark">
+        <div class="brand"><a class="navbar-brand" href="#">gotLost</a></div>
+        <div class="copyright"><small>Copyright &copy; All Rights Reserved</small></div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="../gl-app.js"></script>
+    <script>
+        if (GL.isLoggedIn()) window.location.href = '../index.html';
+
+        function handleRegister(e) {
+            e.preventDefault();
+            const name  = document.getElementById('reg_name').value.trim();
+            const email = document.getElementById('reg_email').value.trim();
+            const pass  = document.getElementById('reg_pass').value;
+            const pass2 = document.getElementById('reg_pass2').value;
+            const terms = document.getElementById('reg_terms').checked;
+            const msg   = document.getElementById('reg-msg');
+
+            if (!name || !email || !pass) { msg.style.color='red'; msg.textContent='Name, email and password are required.'; return false; }
+            if (pass !== pass2) { msg.style.color='red'; msg.textContent='Passwords do not match.'; return false; }
+            if (!terms) { msg.style.color='red'; msg.textContent='Please accept terms and conditions.'; return false; }
+
+            const extra = {
+                phone:  document.getElementById('reg_phone').value.trim(),
+                sex:    document.getElementById('reg_sex').value,
+                year:   document.getElementById('reg_year').value,
+                branch: document.getElementById('reg_branch').value,
+            };
+
+            const res = GL.register(name, email, pass, extra);
+            if (!res.ok) { msg.style.color='red'; msg.textContent=res.msg; return false; }
+
+            GL.setSession(res.user);
+            msg.style.color='green'; msg.textContent='Registered! Redirecting to home...';
+            setTimeout(() => window.location.href = '../index.html', 1000);
+            return false;
+        }
+    </script>
+</body>
+</html>

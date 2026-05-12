@@ -1,0 +1,178 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="foundForm.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lemon&family=Monoton&family=Montserrat:ital,wght@0,200;0,400;0,500;1,300&display=swap" rel="stylesheet">
+    <title>Found Form – gotLost</title>
+</head>
+<body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark">
+        <a class="navbar-brand grow" href="../index.html">gotLost</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link grow" href="../index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link grow" href="lostForm.html">Lost</a></li>
+                <li class="nav-item"><a class="nav-link grow" href="foundForm.html">Found</a></li>
+                <li class="nav-item"><a class="nav-link grow" href="../about_us.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link grow" href="contactus.html">Contact Us</a></li>
+            </ul>
+            <a class="gl-signin-link" href="login.html"><i class="fas fa-user signin grow"></i> SignIn</a>
+        </div>
+    </nav>
+
+    <main>
+        <section>
+            <div class="container" id="main-container">
+                <div class="image"><img src="../images/found.jpg" alt=""></div>
+                <div class="container p-5 mt-5" id="form-container">
+                    <h1 class="text-center">Glad To See You Here <i class="far fa-smile-beam"></i></h1>
+
+                    <div id="login-warning" style="display:none;background:#fff3cd;border:1px solid #ffc107;border-radius:6px;padding:14px;margin:16px 0;text-align:center;">
+                        ⚠️ You must be <a href="login.html">logged in</a> to post a found item.
+                        <br><a href="register.html" class="btn btn-sm btn-primary mt-2">Register / Login</a>
+                    </div>
+
+                    <form class="mt-4" id="mainForm" onsubmit="return handleSubmit(event);">
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend"><span class="input-group-text bg-primary">Name*</span></div>
+                            <input type="text" id="f_name" class="form-control" placeholder="John Cena">
+                        </div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend"><span class="input-group-text bg-primary">Email*</span></div>
+                            <input type="email" id="f_email" class="form-control" placeholder="cenajohn@gmail.com">
+                        </div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend"><span class="input-group-text bg-primary">Item*</span></div>
+                            <input type="text" id="f_item" class="form-control" placeholder="Item">
+                        </div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend"><span class="input-group-text bg-primary">Location</span></div>
+                            <input type="text" id="f_location" class="form-control" placeholder="If you remember">
+                        </div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend"><span class="input-group-text bg-primary">Date*</span></div>
+                            <input type="date" id="f_date" class="form-control">
+                        </div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend"><span class="input-group-text bg-primary">Time*</span></div>
+                            <input type="time" id="f_time" class="form-control">
+                        </div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend"><span class="input-group-text bg-primary">Message</span></div>
+                            <textarea id="f_desc" class="form-control" placeholder="Your Message Here..."></textarea>
+                        </div>
+                        <div class="input-group mb-4" style="display:block;">
+                            <label style="font-weight:600;margin-bottom:6px;display:block;">
+                                <span class="input-group-text bg-primary d-inline" style="border-radius:4px 0 0 4px;padding:6px 12px;color:#fff;">
+                                    📷 Photo
+                                </span>
+                                &nbsp;<small class="text-muted">(Optional — helps identify the item)</small>
+                            </label>
+                            <input type="file" id="f_photo" accept="image/*" class="form-control"
+                                   onchange="previewPhoto(this)"
+                                   style="margin-top:6px;">
+                            <div id="photo-preview" style="margin-top:10px;display:none;">
+                                <img id="photo-img" src="" alt="Preview"
+                                     style="max-width:100%;max-height:220px;border-radius:6px;
+                                            border:1px solid #ddd;object-fit:contain;">
+                                <br>
+                                <button type="button" onclick="clearPhoto()"
+                                        class="btn btn-sm btn-outline-danger mt-2">Remove Photo</button>
+                            </div>
+                        </div>
+                        <div class="form-check mb-5">
+                            <input type="checkbox" class="form-check-input" id="terms">
+                            <label class="form-check-label" for="terms"><a href="#">Agree terms and conditions</a></label>
+                        </div>
+                        <div id="form-msg" style="text-align:center;color:red;margin-bottom:10px;"></div>
+                        <div class="submit-button text-center">
+                            <button type="submit" id="submitBtn" class="btn btn-outline-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="sticky-footer" class="py-2 bg-dark">
+        <div class="brand"><a class="navbar-brand" href="#">gotLost</a></div>
+        <div class="copyright"><small>Copyright &copy; All Rights Reserved</small></div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="../gl-app.js"></script>
+    <script>
+        let _photoData = null;
+
+        function previewPhoto(input) {
+            if (!input.files || !input.files[0]) return;
+            GL.compressImage(input.files[0], function(data) {
+                _photoData = data;
+                document.getElementById('photo-img').src = data;
+                document.getElementById('photo-preview').style.display = 'block';
+            });
+        }
+
+        function clearPhoto() {
+            _photoData = null;
+            document.getElementById('f_photo').value = '';
+            document.getElementById('photo-preview').style.display = 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const session = GL.getSession();
+            if (!session) {
+                document.getElementById('login-warning').style.display = 'block';
+                document.getElementById('submitBtn').disabled = true;
+            } else {
+                document.getElementById('f_name').value  = session.name;
+                document.getElementById('f_email').value = session.email;
+            }
+        });
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            const session = GL.getSession();
+            if (!session) { window.location.href = 'login.html'; return false; }
+
+            const item  = document.getElementById('f_item').value.trim();
+            const date  = document.getElementById('f_date').value;
+            const terms = document.getElementById('terms').checked;
+            const msg   = document.getElementById('form-msg');
+
+            if (!item || !date) { msg.textContent = 'Please fill in all required fields.'; return false; }
+            if (!terms) { msg.textContent = 'Please accept terms and conditions.'; return false; }
+
+            const data = {
+                name:     document.getElementById('f_name').value.trim(),
+                email:    document.getElementById('f_email').value.trim(),
+                phone:    session.phone || '',
+                item,
+                location: document.getElementById('f_location').value.trim(),
+                date,
+                time:     document.getElementById('f_time').value,
+                desc:     document.getElementById('f_desc').value.trim(),
+                postedBy: session.email,
+                postedByName: session.name,
+            };
+            if (_photoData) data.photo = _photoData;
+
+            GL.addItem('found', data);
+
+            document.getElementById('submitBtn').textContent = 'Submitted! Redirecting...';
+            document.getElementById('submitBtn').disabled = true;
+            setTimeout(() => window.location.href = '../index.html', 1200);
+            return false;
+        }
+    </script>
+</body>
+</html>

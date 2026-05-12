@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login – gotLost</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f0f0f0; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .login { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 340px; }
+        .login h2 { text-align: center; color: #333; margin-bottom: 24px; }
+        .login label { font-weight: bold; display: block; margin-bottom: 4px; }
+        .login input[type="text"], .login input[type="password"] {
+            width: 100%; padding: 10px; margin-bottom: 16px; border: 1px solid #ccc;
+            border-radius: 5px; box-sizing: border-box; font-size: 15px;
+        }
+        .login .btn-login { width: 100%; padding: 11px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+        .login .btn-login:hover { background: #0056b3; }
+        #msg { text-align: center; margin-top: 10px; font-size: 14px; min-height: 20px; }
+        .links { text-align: center; margin-top: 14px; font-size: 14px; }
+        .links a { color: #007bff; }
+    </style>
+</head>
+<body>
+    <div class="login">
+        <h2>Login</h2>
+        <label>Username / Email</label>
+        <input type="text" id="Uname" placeholder="Your name or email">
+        <label>Password</label>
+        <input type="password" id="Pass" placeholder="Password">
+        <input type="checkbox" id="check"> <span style="font-size:14px;">Remember me</span>
+        <br><br>
+        <button class="btn-login" onclick="doLogin()">Log In</button>
+        <div id="msg"></div>
+        <div class="links">
+            <a href="#">Forgot Password</a> &nbsp;|&nbsp;
+            <a href="register.html">Register here</a><br><br>
+            <a href="../index.html">← Back to Home</a>
+        </div>
+    </div>
+
+    <script src="../gl-app.js"></script>
+    <script>
+        // If already logged in, go home
+        if (GL.isLoggedIn()) window.location.href = '../index.html';
+
+        document.getElementById('Pass').addEventListener('keypress', e => { if (e.key === 'Enter') doLogin(); });
+
+        function doLogin() {
+            const u = document.getElementById('Uname').value.trim();
+            const p = document.getElementById('Pass').value.trim();
+            const msg = document.getElementById('msg');
+            if (!u || !p) { msg.style.color='red'; msg.textContent='Please fill in both fields.'; return; }
+            const res = GL.login(u, p);
+            if (!res.ok) { msg.style.color='red'; msg.textContent=res.msg; return; }
+            msg.style.color='green'; msg.textContent='Login successful! Redirecting...';
+            setTimeout(() => window.location.href = '../index.html', 900);
+        }
+    </script>
+</body>
+</html>
