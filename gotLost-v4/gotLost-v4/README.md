@@ -102,12 +102,6 @@ git push -u origin <your_branch_name>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-Contributions of any kind welcome!
 
->    NOTE: if you should be on the list of contributors but we forgot you, don't be shy and let us know!
 
-## License
 
-[![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
-
-To the extent possible under law, [Volley-Freak](https://www.linkedin.com/) has waived all copyright and neighboring rights to this work.
